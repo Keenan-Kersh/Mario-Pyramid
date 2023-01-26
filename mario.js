@@ -30,6 +30,6 @@ function printPyramid(height, width = height+1) {
 		if(height != 1) {
     	printPyramid(height-1, width);
 		}
-		console.log(`${" ".repeat(width - (height + 1))}${"#".repeat(height + 1)}`);
+		console.log(`${".".repeat(width - (height + 1))}${"#".repeat(height + 1)}`);
 
 }
