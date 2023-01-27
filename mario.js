@@ -30,6 +30,9 @@ function printPyramid(height, width = height+1) {
 		if(height != 1) {
     	printPyramid(height-1, width);
 		}
-		console.log(`${".".repeat(width - (height + 1))}${"#".repeat(height + 1)}`);
+		let rowStr = document.createTextNode(`${".".repeat(width - (height + 1))}${"#".repeat(height + 1)}`);
+		let rowParagraph = document.createElement("p");
+		rowParagraph.appendChild(rowStr);
+		document.getElementById("pyramid").appendChild(rowParagraph);
 
 }
