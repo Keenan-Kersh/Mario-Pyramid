@@ -1,38 +1,47 @@
+let heightBox = document.getElementById("height");
 
+let button = document.getElementById("pyramidbutton");
 
-let pyramidHeight = parseInt(prompt("How tall shold the pyramid be?"));
-if(isNaN(pyramidHeight)) {
-	console.log("Error: User input isn't an integer");
-}
-else {
-	printPyramid(pyramidHeight);
-}
-// TODO #2
-// Take in user input for the height
-
+button.addEventListener("click", () => {determineHeightAndThenDrawPyramid()});
 
 /*
- * printPyramid
+ * drawPyramid
  *
- * Prints to the console a pyramid of '#' characters of the specified height
- * For example, if height is 5, the console will look like this:
+ * Adds to the DOM a pyramid of '#' characters of the specified height
+ * For example, if height is 5, the result will look like this:
  *          ##
  *         ###
  *        ####
  *       #####
  *      ######
  */
-function printPyramid(height, width = height+1) {
-		if(height <= 0) {
-			console.log("Error: Pyramid height out of range");
-			return;
-		}
-		if(height != 1) {
-    	printPyramid(height-1, width);
-		}
-		let rowStr = document.createTextNode(`${".".repeat(width - (height + 1))}${"#".repeat(height + 1)}`);
-		let rowParagraph = document.createElement("p");
-		rowParagraph.appendChild(rowStr);
-		document.getElementById("pyramid").appendChild(rowParagraph);
+function drawPyramid(height, width = height+1) {
+	document.getElementById("pyramid").innerHTML = "";
+	
+	if(height <= 0) {
+		console.log("Error: Pyramid height out of range");
+		return;
+	}
+	
+	if(height != 1) {
+		drawPyramid(height-1, width);
+	}
+	
+	let rowStr = document.createTextNode(`${".".repeat(width - (height + 1))}${"#".repeat(height + 1)}`);
+	let rowParagraph = document.createElement("p");
+	rowParagraph.appendChild(rowStr);
+	document.getElementById("pyramid").appendChild(rowParagraph);
 
+}
+
+function determineHeightAndThenDrawPyramid() {
+	console.log("Button pressed!");
+	let pyramidHeight = parseInt(heightBox.value);
+
+	if(isNaN(pyramidHeight)) {
+		console.log("Invalid height!");
+		return;
+	}
+
+	drawPyramid(pyramidHeight);
 }
