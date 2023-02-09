@@ -2,42 +2,93 @@
 <html>
 <head>
     <style>
-
-        #pyramid {
-            line-height: 0;
-            font-size: 30px;
-        }
-
         body {
             font-family: "Courier New", monospace;
             text-align: center;
         }
+
+				h1 {
+						background-color: #ad69a1;
+						width: 50%;
+						padding-top: 2.5%;
+						padding-bottom: 2.5%;
+						margin: auto;
+						margin-bottom: 0%;
+						color: #f8f8f8;
+				}
+
+				div {
+						padding: 5%;
+						margin: auto;
+				}
+
+				output {
+						font-weight: bolder;
+				}
+				
+				#main {
+						width: 40%;
+						background-color: #f5f5f5;
+				}
+
+				#pyramidbuilder {
+						padding: 0%;
+						border: 2px solid #ad69a1;
+						border-radius: 4px;
+				}
+			
+				#settings {
+						background-color: lightgray;
+				}
+
+				#material {
+						margin-right: 15%;
+				}
+
+				#heightlabel {
+						margin-left: 15%;
+				}
+
+				#pyramid {
+            line-height: 0;
+            font-size: 1.6vw;
+						background-color: #eeeeee
+        }
+
+				#pyramid p {
+						color: #ad69a1;
+				}
+
+				
     </style>
 </head>
-<body >
-    <h1>Mario 3</h1>
+<body>
+    <h1>Pyramid Slide</h1>
 
-    <br>
+		<div id="main">
+			<div id="pyramidbuilder">
+				<div id="settings">
+					<label>Brick Symbol: </label>
+		
+					<select name="material" id="material">
+						<option value="#">#</option>
+						<option value="@">@</option>
+						<option value="X">X</option>
+						<option value="$">$</option>
+					</select>
+			
+			    <label id="heightlabel">How high?</label>
+			
+			    <input type="range" id="height" name="height" min="1" max="20"/>
 
-    <p>When you say</p>
-
-    <p><strong>Draw a pyramid</strong></p>
-
-    <p>I say:</p>
-
-    <br>
-
-    <label>How high?</label>
-
-    <input type="text" id="height"/>
+					<output>11</output>
+				</div>
+	
+				<div id="pyramid"></div>
+			</div>
+		</div>
 
     <br><br>
-
-    <button id="pyramidbutton">Draw a pyramid</button>
-
-    <br><br>
-
-    <div id="pyramid"></div>
 
     <script src="mario.js"></script>
 </body>

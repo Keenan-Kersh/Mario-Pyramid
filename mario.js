@@ -1,8 +1,13 @@
-let heightBox = document.getElementById("height");
+let heightRange = document.getElementById("height");
+let heightDisplay = document.querySelector("output");
+let symbol = document.getElementById("material");
 
-let button = document.getElementById("pyramidbutton");
+heightRange.addEventListener("input", () => {
+	determineHeightAndThenDrawPyramid();
+	heightDisplay.innerHTML = heightRange.value;
+});
+symbol.addEventListener("change", () => {determineHeightAndThenDrawPyramid()});
 
-button.addEventListener("click", () => {determineHeightAndThenDrawPyramid()});
 
 /*
  * drawPyramid
@@ -27,7 +32,7 @@ function drawPyramid(height, width = height+1) {
 		drawPyramid(height-1, width);
 	}
 	
-	let rowStr = document.createTextNode(`${".".repeat(width - (height + 1))}${"#".repeat(height + 1)}`);
+	let rowStr = document.createTextNode(`${"\u00a0".repeat(width - (height + 1))}${symbol.value.repeat(height + 1)}`);
 	let rowParagraph = document.createElement("p");
 	rowParagraph.appendChild(rowStr);
 	document.getElementById("pyramid").appendChild(rowParagraph);
@@ -35,8 +40,8 @@ function drawPyramid(height, width = height+1) {
 }
 
 function determineHeightAndThenDrawPyramid() {
-	console.log("Button pressed!");
-	let pyramidHeight = parseInt(heightBox.value);
+	console.log("Drawing pyramid...");
+	let pyramidHeight = parseInt(heightRange.value);
 
 	if(isNaN(pyramidHeight)) {
 		console.log("Invalid height!");
@@ -45,3 +50,5 @@ function determineHeightAndThenDrawPyramid() {
 
 	drawPyramid(pyramidHeight);
 }
+
+determineHeightAndThenDrawPyramid();
