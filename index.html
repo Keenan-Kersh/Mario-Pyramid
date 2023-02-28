@@ -2,7 +2,6 @@
 <html>
 <head>
     <style>
-
         #pyramid {
             line-height: 0;
             font-size: 30px;
@@ -12,28 +11,35 @@
             font-family: "Courier New", monospace;
             text-align: center;
         }
+
+        .invalid-field {
+            border: 1px solid red;
+        }
+
+        .error-message {
+            color: red;
+        }
     </style>
 </head>
-<body >
-    <h1>Mario 3</h1>
-
-    <br>
+<body>
+    <h1>Mario 4</h1>
 
     <p>When you say</p>
-
     <p><strong>Draw a pyramid</strong></p>
-
     <p>I say:</p>
-
     <br>
 
-    <label>How high?</label>
-
-    <input type="text" id="height"/>
-
-    <br><br>
-
-    <button id="pyramidbutton">Draw a pyramid</button>
+    <form id="draw-form">
+        <label>
+            How high?
+            <input type="text" id="height"/>
+            <label class="error-message">
+                <!-- If there was a user error, we will put a message in here -->
+            </label>
+        </label>
+        <br><br>
+        <input type="submit" value="Draw a pyramid"/>
+    </form>
 
     <br><br>
 
